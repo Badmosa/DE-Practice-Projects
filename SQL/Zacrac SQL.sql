@@ -495,8 +495,8 @@ ORDER BY active_employees DESC
 
 
 UPDATE employees
-SET role = 'Data Analyst'
-WHERE employee_id = 3
+SET role = 'Jr. Data Engineer'
+WHERE employee_id = 16
 
 
 
@@ -505,5 +505,7 @@ ADD CONSTRAINT employee_name
 UNIQUE (employee_name)
 
 
-
+UPDATE employees
+SET department = 'Data'
+WHERE employee_id = 3
 
