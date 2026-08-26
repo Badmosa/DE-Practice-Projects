@@ -183,3 +183,48 @@ for link in links:
     address = base_url + link["href"]
     text = link.text
 print(f"{text}: {address}")
+
+# scrape to get result
+import mechanicalsoup
+browser = mechanicalsoup.Browser()
+page = browser.get("http://olympus.realpython.org/dice")
+tag = page.soup.select("#result")[0]
+result = tag.text
+print(f"The result of your dice roll is: {result}")
+
+
+# 5 sec time pause to print: I'm amazed!
+import time
+
+print("I'm about to wait for five seconds...")
+time.sleep(5)
+print("Done waiting!")
+
+
+# 30 sec: WOW!
+import time
+
+import mechanicalsoup
+browser = mechanicalsoup.Browser()
+for i in range(4):
+    page = browser.get("http://olympus.realpython.org/dice")
+    tag = page.soup.select("#result")[0]
+    result = tag.text
+print(f"The result of your dice roll is: {result}")
+time.sleep(30)
+
+# As much as I liked  this, its a waste of time; stopping it the "IF" statement...
+import time
+
+import mechanicalsoup
+browser = mechanicalsoup.Browser()
+for i in range(4):
+        page = browser.get("http://olympus.realpython.org/dice")
+tag = page.soup.select("#result")[0]
+result = tag.text
+print(f"The result of your dice roll is: {result}")
+
+# Wait 30 seconds if this isn't the last request
+if i < 3:
+
+    time.sleep(30)
