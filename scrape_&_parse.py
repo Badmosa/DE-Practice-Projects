@@ -100,3 +100,86 @@ print(title)
 
 # * → "Give me everything." can generate a lot of data from html during web scraping
 # *? → "Okay, give me the minimum." can generate littlle data to satisfaction from html during web scraping
+
+# exercise 1: Write a script that grabs the full HTML from the page: "http://olympus.realpython.org/profiles/dionysus"
+import re
+from urllib.request import urlopen
+url = "http://olympus.realpython.org/profiles/dionysus"
+
+# Exercise 2
+for tag in ["Name: ", "Favorite Color: "]:
+    tag_start = html_text.find(tag) + len(tag)
+    tag_end = html_text[tag_start:].find("<")
+# Removing extra spaces and newline padding
+    print(html_text[tag_start : tag_start + tag_end].strip(" \n"))
+
+
+# Exercise 3
+# Get the "Name" and "Favorite Color" using regular expressions
+# import re
+
+# # Match anything up until a new line or HTML tag; non-greedy
+# for tag in ["Name: .*?[\n<]", "Favorite Color: .*?[\n<]"]:
+#     match_results = re.search(tag, html_text)
+# # Removing the "Name: " or "Favorite Color: " label from first result
+#     result = re.sub(".*: ", "", match_results.group())
+# # Removing extra spaces and newline padding along with opening HTML tag
+#     print(result.strip(" \n<"))
+
+# Match anything up until a new line or HTML tag; non-greedy
+import re
+
+for tag in ["Name: .*?[\n<]", "Favorite Color: .*?[\n<]"]:
+    match_results = re.search(tag, html_text)
+
+    if match_results:
+        result = re.sub(".*: ", "", match_results.group())
+        print(result.strip(" \n<"))
+    else:
+        print("No match found for:", tag)
+
+
+from bs4 import BeautifulSoup
+
+from urllib.request import urlopen
+url = "http://olympus.realpython.org/profiles/dionysus"
+page = urlopen(url)
+html = page.read().decode("utf-8")
+soup = BeautifulSoup(html, "html.parser")
+print(soup.get_text())
+print(soup.find_all("img"))
+print(soup.title.string)
+
+# mechanicalsoup
+import mechanicalsoup
+
+#1
+browser = mechanicalsoup.Browser()
+url = "http://olympus.realpython.org/login"
+login_page = browser.get(url)
+login_html = login_page.soup
+
+#2
+form = login_html.select("form")[0]
+form.select("input")[0]["value"] = "zeus"
+form.select("input")[1]["value"] = "ThunderDude"
+
+#3
+profiles_page = browser.submit(form, login_page.url)
+print(profiles_page.url)
+
+
+# how too provide URL for links
+links = profiles_page.soup.select("a")
+
+for link in links:
+    address = link["href"]
+    text = link.text
+print(f"{text}: {address}")
+
+
+base_url = "http://olympus.realpython.org"
+for link in links:
+    address = base_url + link["href"]
+    text = link.text
+print(f"{text}: {address}")
