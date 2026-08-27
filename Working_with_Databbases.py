@@ -1,3 +1,4 @@
+# Python Text: Working With Databases!
 # The processes of Database Connection.
 # sqlite3.connect = to connect a Database
 # sqlite3:remove: = to remove a Database
@@ -34,7 +35,7 @@ import sqlite3
 connection = sqlite3.connect("test_database.db")
 cursor = connection.cursor()
 cursor.execute(
-"""CREATE TABLE People(
+"""CREATE TABLE IF NOT EXISTS People(
 FirstName TEXT,
 LastName TEXT,
 Age INT
@@ -58,7 +59,7 @@ import sqlite3
 with sqlite3.connect("test_database.db") as connection:
      cursor = connection.cursor()
      cursor.execute(
-         """CREATE TABLE People(
+         """CREATE TABLE IF NOT EXISTS People(
              FirstName TEXT,
              LastName TEXT,
              Age INT
@@ -80,12 +81,12 @@ with sqlite3.connect("test_database.db") as connection:
      cursor = connection.cursor()
      cursor.executescript(
          """DROP TABLE IF EXISTS People
-         CREATE TABLE IF NOT EXISTS People(
-             FirstName TEXT,
-             LastName TEXT,
-             Age INT
-         );"""
-     )
+            CREATE TABLE IF NOT EXISTS People(
+                FirstName TEXT,
+                 LastName TEXT,
+                 Age INT
+             );"""
+        )
 
 cursor.execute(
      """INSERT INTO People VALUES(
@@ -108,7 +109,7 @@ cursor.executemany("INSERT INTO People VALUES(?, ?, ?);", values)
 
 
 
-# #  PARAMETERIZED SQL UPDATE STATEMENT: for updating "sqlite queries"
+# PARAMETERIZED SQL UPDATE STATEMENT: for updating "sqlite queries"
 import sqlite3
 
 first_name = input("Enter your first name: ")
