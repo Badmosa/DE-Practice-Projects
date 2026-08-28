@@ -3,7 +3,13 @@
 
 SELECT *
 FROM orders
-LIMIT 5
+LIMIT 5;
+
+-- Using "TABLESAMPLE SYSTEM (1)" To return approximately 1% of the table's rows--
+SELECT *
+FROM orders
+TABLESAMPLE SYSTEM (1)
+LIMIT 5;
 
 SELECT *
 FROM accounts
