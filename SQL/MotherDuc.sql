@@ -1,3 +1,4 @@
+-- SQLBook: Code
 <!DOCTYPE html>
 <!-- saved from url=(0155)https://app.motherduck.com/notebooks/aggregate-function-3580294f-92db-4663-bfda-990e183200ed?code=6L65v2ynbfiA_-mZG-bwF3qAHVwfUsE9Tduhg_8dgzAPq&state=STATE -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>.ͼ1.cm-focused {outline: 1px dotted #212121;}
@@ -1335,7 +1336,7 @@
 &lt;/div&gt;&lt;/a&gt;
 &lt;/div&gt;   
                 &lt;div class=&quot;title-container&quot;&gt;
-    &lt;h3&gt;Stay calm and clear under pressure&lt;/h3&gt;
+    &lt;h3&gt;Stay calm and clearunder pressure&lt;/h3&gt;
 &lt;/div&gt;
                   &lt;div class=&quot;text-container&quot;&gt;
                 &lt;p&gt;Badmos, working against tight deadlines at the office? Proofreader suggests ways to improve conciseness, specificity, and logical flow in real time so your writing feels intentional, not rushed. Get unlimited access on Pro!&lt;/b&gt;&lt;p&gt;
